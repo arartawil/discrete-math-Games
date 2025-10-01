@@ -1,0 +1,54 @@
+@page
+@model AlgoPlayground.Pages.Game.TowerLogic.IndexModel
+@{
+    ViewData["Title"] = "Tower Defense";
+}
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h1 class="h4">Tower Defense – Logic Gates</h1>
+                <div id="towerLane" class="tower-lane" aria-label="Tower defense lane"></div>
+                <div class="mt-3 d-flex flex-wrap gap-2">
+                    <button class="btn btn-primary" id="towerStartBtn">Start Wave</button>
+                    <button class="btn btn-outline-secondary" id="towerPauseBtn">Pause</button>
+                    <button class="btn btn-outline-danger" id="towerResetBtn">Reset</button>
+                    <label class="form-label mb-0">Speed
+                        <select id="towerSpeed" class="form-select d-inline-block w-auto ms-2">
+                            <option value="1">1x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2x</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="mt-3">
+                    <h2 class="h6">Gate Palette</h2>
+                    <div class="d-flex flex-wrap gap-2" id="towerPalette"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h2 class="h5">Status</h2>
+                <dl class="row mb-0">
+                    <dt class="col-6">Wave</dt><dd class="col-6" id="towerWave">1</dd>
+                    <dt class="col-6">HP</dt><dd class="col-6" id="towerHp">5</dd>
+                    <dt class="col-6">Score</dt><dd class="col-6" id="towerScore">0</dd>
+                    <dt class="col-6">Enemies</dt><dd class="col-6" id="towerEnemies">0</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="h5">Help</h2>
+                <p>Assign gates to the five cells. Enemies advance and evaluate at each tower. Correct outputs remove them; incorrect hits reduce HP.</p>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/common.js"></script>
+    <script src="~/js/tower.js"></script>
+}

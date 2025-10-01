@@ -1,0 +1,46 @@
+@page
+@model AlgoPlayground.Pages.Game.MazeRunner.IndexModel
+@{
+    ViewData["Title"] = "Maze Runner";
+}
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h1 class="h4">Maze Runner – Graph Theory</h1>
+                <canvas id="mazeCanvas" width="560" height="560" class="border rounded w-100" tabindex="0" aria-label="Maze canvas"></canvas>
+                <div class="mt-3 d-flex flex-wrap gap-2">
+                    <button class="btn btn-primary" id="mazeStartBtn">Start</button>
+                    <button class="btn btn-outline-secondary" id="mazePauseBtn">Pause</button>
+                    <button class="btn btn-outline-danger" id="mazeResetBtn">Reset</button>
+                    <button class="btn btn-success" id="mazeNextBtn">Next Level</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h2 class="h5">Stats</h2>
+                <dl class="row mb-0">
+                    <dt class="col-6">Level</dt><dd class="col-6" id="mazeLevel">1</dd>
+                    <dt class="col-6">Steps</dt><dd class="col-6" id="mazeSteps">0</dd>
+                    <dt class="col-6">Timer</dt><dd class="col-6" id="mazeTimer">0s</dd>
+                    <dt class="col-6">Optimal Path</dt><dd class="col-6" id="mazeOptimal">-</dd>
+                    <dt class="col-6">Nodes Expanded</dt><dd class="col-6" id="mazeNodes">-</dd>
+                    <dt class="col-6">Score</dt><dd class="col-6" id="mazeScore">-</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="h5">Help</h2>
+                <p>Navigate the grid using arrow keys or WASD. Reach the goal with as few steps as possible. The server computes an optimal BFS path for comparison.</p>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/common.js"></script>
+    <script src="~/js/maze.js"></script>
+}

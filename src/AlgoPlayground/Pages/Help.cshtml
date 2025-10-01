@@ -1,0 +1,61 @@
+@page
+@model AlgoPlayground.Pages.HelpModel
+@{
+    ViewData["Title"] = "Help";
+}
+<h1 class="h3 mb-4">Help & Cheat Sheets</h1>
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h2 class="h5">Maze Runner – Graph Theory</h2>
+                <p>Use the arrow keys or WASD to navigate the maze. Compare your path length to the optimal breadth-first search result from the server.</p>
+                <ul>
+                    <li>Green tile: Start</li>
+                    <li>Blue tile: Goal</li>
+                    <li>Walls are black; open tiles white</li>
+                    <li>Reset any time to try a fresh layout</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h2 class="h5">Tower Defense – Logic Gates</h2>
+                <p>Enemies bring inputs (A,B) and expect a truth-function. Place gates on the lane to evaluate the inputs.</p>
+                <ul>
+                    <li>Correct gate output removes the enemy</li>
+                    <li>Incorrect reduces base HP</li>
+                    <li>Wave difficulty increases speed and target functions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h2 class="h5">Matching Pairs – Relations &amp; Functions</h2>
+                <p>Select a domain card then a codomain card to create a relation. Switch to Function mode to enforce exactly one mapping per domain.</p>
+                <ul>
+                    <li>Function mode enforces single codomain per domain</li>
+                    <li>View injective/surjective hints for small sets</li>
+                    <li>Accuracy shows valid / total attempts</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h2 class="h5">Puzzle Solver – Combinatorics</h2>
+                <p>Slide tiles to match the goal state. The hint reveals Manhattan distance lower bounds and inversion counts.</p>
+                <ul>
+                    <li>Levels increase board size</li>
+                    <li>Guaranteed solvable shuffles</li>
+                    <li>Finish faster for higher scores</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

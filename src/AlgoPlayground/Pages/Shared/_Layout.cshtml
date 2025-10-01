@@ -1,0 +1,55 @@
+@inject IProfileService ProfileService
+@{
+    var profile = await ProfileService.GetActiveProfileAsync();
+    var title = ViewData["Title"] as string ?? "AlgoPlayground";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@title - AlgoPlayground</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header class="bg-dark text-white mb-4">
+        <nav class="navbar navbar-expand-lg navbar-dark container">
+            <a class="navbar-brand" asp-page="/Dashboard">AlgoPlayground</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" asp-page="/Dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-page="/Scores">Scores</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-page="/Help">Help</a></li>
+                </ul>
+                <span class="navbar-text">
+                    @if (profile != null)
+                    {
+                        <text>@profile.Name (#@profile.StudentNumber)</text>
+                    }
+                    else
+                    {
+                        <a class="text-white" asp-page="/Index">Create Profile</a>
+                    }
+                </span>
+            </div>
+        </nav>
+    </header>
+    <div class="container pb-5">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="bg-light border-top py-3 mt-auto">
+        <div class="container text-center">
+            <small>&copy; @DateTime.UtcNow.Year - AlgoPlayground</small>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="~/js/common.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,46 @@
+@page
+@model AlgoPlayground.Pages.Game.PuzzleSolver.IndexModel
+@{
+    ViewData["Title"] = "Puzzle Solver";
+}
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h1 class="h4">Puzzle Solver – Combinatorics</h1>
+                <div id="puzzleGrid" class="puzzle-grid" aria-label="Sliding puzzle board"></div>
+                <div class="mt-3 d-flex flex-wrap gap-2">
+                    <button class="btn btn-primary" id="puzzleStartBtn">Start</button>
+                    <button class="btn btn-outline-secondary" id="puzzleHintBtn">Hint</button>
+                    <button class="btn btn-outline-danger" id="puzzleResetBtn">Reset</button>
+                    <button class="btn btn-success" id="puzzleNextBtn">Next Level</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h2 class="h5">Stats</h2>
+                <dl class="row mb-0">
+                    <dt class="col-6">Level</dt><dd class="col-6" id="puzzleLevel">1</dd>
+                    <dt class="col-6">Moves</dt><dd class="col-6" id="puzzleMoves">0</dd>
+                    <dt class="col-6">Time</dt><dd class="col-6" id="puzzleTimer">0s</dd>
+                    <dt class="col-6">Inversions</dt><dd class="col-6" id="puzzleInversions">-</dd>
+                    <dt class="col-6">Manhattan</dt><dd class="col-6" id="puzzleManhattan">-</dd>
+                    <dt class="col-6">Score</dt><dd class="col-6" id="puzzleScore">-</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="h5">Hint</h2>
+                <p id="puzzleHintText" class="text-muted">Press Hint to compute the Manhattan lower bound and inversion count.</p>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/common.js"></script>
+    <script src="~/js/puzzle.js"></script>
+}
