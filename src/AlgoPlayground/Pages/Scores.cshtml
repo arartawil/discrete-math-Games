@@ -1,0 +1,51 @@
+@page
+@model AlgoPlayground.Pages.ScoresModel
+@{
+    ViewData["Title"] = "Scores";
+}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3">Scores</h1>
+    <form method="get" class="d-flex gap-2">
+        <select class="form-select" name="gameId" aria-label="Select game">
+            <option value="">All Games</option>
+            @foreach (var option in Model.GameOptions)
+            {
+                <option value="@option.Value" selected="@(Model.SelectedGame == option.Value ? "selected" : null)">@option.Label</option>
+            }
+        </select>
+        <button class="btn btn-outline-secondary" type="submit">Filter</button>
+    </form>
+</div>
+@if (Model.Scores.Count == 0)
+{
+    <div class="alert alert-info">No scores recorded yet. Play a game to see results here!</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Game</th>
+                    <th>Level</th>
+                    <th>Points</th>
+                    <th>Duration (s)</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var score in Model.Scores)
+            {
+                <tr>
+                    <td>@score.GameId</td>
+                    <td>@score.Level</td>
+                    <td>@score.Points</td>
+                    <td>@score.DurationSec</td>
+                    <td>@score.Timestamp.ToLocalTime().ToString("g")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
+<a class="btn btn-outline-primary" asp-page-handler="Export" asp-route-gameId="@Model.SelectedGame">Export CSV</a>
